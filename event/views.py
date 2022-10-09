@@ -103,9 +103,10 @@ def add_event(request):
 def venue_update_form(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
     form = VenueForm(request.POST or None ,instance=venue)
-    if form.is_valid():
-        form.save()
-        return redirect('update-venue')
+    if(request.method=="POST"):
+        if form.is_valid():
+            form.save()
+            return redirect('list-venues')
     return render(request, 'venue_update_form.html',{"form":form})
 
 
