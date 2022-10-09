@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+
+
+
+<h1> Venue Update Form </h1>
+
+<form action="" method=POST>
+    {% load crispy_forms_tags %}
+    {% csrf_token %}
+    {% comment %} {% for f in form  %}
+    {{f.label_tag}} {{f}} <br>
+    
+    {% endfor %} {% endcomment %}
+    {{form|crispy}}
+    <input type=submit value=Update class="btn btn-secondary">
+</form>
+
+
+
+
+{% endblock  %}

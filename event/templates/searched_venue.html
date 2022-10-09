@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+
+Searching for....{{key}}
+
+<ul class="list-group">
+    {% for venue in venues  %}
+    
+        <li class="list-group-item"> <a href="{% url 'show-venue' venue.id %}"> {{venue.name}} </a></li>
+    
+    {% endfor %}
+    </ul>
+
+{% endblock  %}

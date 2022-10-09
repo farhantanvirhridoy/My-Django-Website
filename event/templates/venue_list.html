@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<table class="table table-striped">
+    {% for venue in venues %}
+    <tr>
+        <td> <a href="{% url 'show-venue' venue.id %}"> {{venue.name}} </a> </td>
+        <td align=right>
+            <a href="{% url 'venue-update-form' venue.id %}" class="btn btn-outline-secondary btn-sm">Update</a>
+            <a href="{% url 'delete-venue' venue.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+        </td>
+    </tr>
+
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}
