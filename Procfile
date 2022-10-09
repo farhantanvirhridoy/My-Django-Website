@@ -1,1 +1,1 @@
-web: gunicorn myclub.wsgi
+web: gunicorn myclub.wsgi --log-file -
