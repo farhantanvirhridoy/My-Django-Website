@@ -12,6 +12,7 @@ import io
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import A4
+from django.core.paginator import Paginator
 
 def venue_pdf(request):
     buf = io.BytesIO()
@@ -128,7 +129,14 @@ def show_venue(request, venue_id):
 
 def list_venues(request):
     venues = Venue.objects.all()
-    return render(request, 'venue_list.html', {"venues": venues})
+
+    p = Paginator(venues, 3)
+    page = request.GET.get('page')
+    some_venues = p.get_page(page)
+    return render(request, 'venue_list.html', {
+        "venues": venues,
+        "some_venues": some_venues,
+        })
 
 
 def add_venue(request):
