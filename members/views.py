@@ -2,8 +2,25 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from event.models import Msg
+from event.forms import MsgForm
 
 # Create your views here.
+
+
+def chat(request):
+    user = request.user
+    msgs = Msg.objects.all().order_by('id')
+    if request.method == 'POST':
+        
+        form = MsgForm(request.POST)
+        form.save()
+        
+        redirect('home')
+    else:
+        text = ''
+    return render(request, 'chat.html', {'text':request.POST, 'user':user, 'msgs':msgs})
+
 
 def register_user(request):
     if request.method == 'POST':

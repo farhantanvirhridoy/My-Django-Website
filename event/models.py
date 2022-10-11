@@ -29,5 +29,10 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
+class Msg(models.Model):
+    name  = models.CharField(max_length=120)
+    msg = models.CharField(max_length=250)
 
+    def __str__(self):
+        return self.name + ': ' + self.msg
 # Create your models here.

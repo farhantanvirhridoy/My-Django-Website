@@ -84,6 +84,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout_user' %}">Logout</a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'chat' %}">Chat</a>
+            </li>
             {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'register_user' %}">Register</a>

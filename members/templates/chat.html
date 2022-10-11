@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h1> History </h1>
+
+
+{% for msg in msgs  %}
+
+{{msg.name}} : {{msg.msg}} <br>
+
+{% endfor %}
+<br>
+<form action="{% url 'chat' %}" method=POST>
+{% csrf_token %}
+    
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" value={{user}}>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Message</label>
+            <textarea name='msg' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+        </div>
+
+    <input type="submit" value="Send">
+</form>
+{% else %}
+Please Login
+{% endif %}
+{% endblock %}
