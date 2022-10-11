@@ -6,6 +6,9 @@
 <h1> Event Submitted Successfully </h1>
 
 {% else %}
+
+{%if user.is_authenticated %}
+
 <h1> Add Event Form </h1>
 
 <form action="" method=POST>
@@ -18,7 +21,10 @@
     {{form|crispy}}
     <input type=submit value=Submit class="btn btn-secondary">
 </form>
+{% else %}
 
+<h1> Sorry </h1>
+{% endif %}
 {% endif %}
 
 
