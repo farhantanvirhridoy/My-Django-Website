@@ -13,6 +13,12 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import A4
 from django.core.paginator import Paginator
+from myschool.settings import STATIC_ROOT, BASE_DIR
+import os
+
+def about(request):
+    return render(request, 'index.html')
+
 
 def venue_pdf(request):
     buf = io.BytesIO()
